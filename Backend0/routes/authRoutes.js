@@ -188,7 +188,7 @@ router.patch("/profile", protect, async (req, res) => {
       user: sanitizeUser(req.user),
     });
   } catch (error) {
-    return res.status(500).json({ message: "Unable to update profile", error: error.message });
+    return res.status(500).json({ message: "Unable to update profile...", error: error.message });
   }
 });
 
