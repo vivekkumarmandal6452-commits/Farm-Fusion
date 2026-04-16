@@ -1,0 +1,651 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(246, 242, 233, 0.96), rgba(255, 255, 255, 0.92)),
+    #f6f2ea;
+  color: #0f172a;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(245, 236, 217, 0.76)),
+    url("https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1800&q=80"),
+    url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1800&q=80");
+  background-position: center, left center, right center;
+  background-size: cover, cover, cover;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  filter: blur(1px) saturate(0.98);
+  pointer-events: none;
+  z-index: -2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  position: relative;
+  z-index: 0;
+}
+
+.site-shell {
+  position: relative;
+}
+
+.site-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 171, 0, 0.14), transparent 22%),
+    radial-gradient(circle at right center, rgba(27, 94, 32, 0.1), transparent 28%),
+    radial-gradient(circle at bottom center, rgba(255, 255, 255, 0.28), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+  pointer-events: none;
+  z-index: -1;
+}
+
+.navbar-shell {
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  background-image:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.52), rgba(27, 94, 32, 0.58)),
+    url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1800&q=80");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.navbar-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 171, 0, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  pointer-events: none;
+}
+
+.navbar-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-pill {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.navbar-mobile-toggle {
+  display: none;
+}
+
+.navbar-mobile-menu {
+  display: none;
+}
+
+.navbar-mobile-panel {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.12));
+  box-shadow:
+    0 22px 44px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(24px);
+  padding: 1rem;
+}
+
+.navbar-mobile-link {
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(135deg, rgba(246, 239, 224, 0.18), rgba(255, 255, 255, 0.04)),
+    url("https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=2000&q=80");
+  background-size: cover;
+  background-position: center 34%;
+  min-height: 600px;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 248, 238, 0.18), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at top right, rgba(255, 171, 0, 0.12), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(27, 94, 32, 0.1), transparent 30%);
+  pointer-events: none;
+}
+
+.home-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero-copy {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.42));
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  box-shadow:
+    0 24px 58px rgba(15, 23, 42, 0.16),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
+  animation: homeFadeUp 0.9s ease-out both;
+  backdrop-filter: blur(18px);
+}
+
+.home-badge {
+  animation: homeFadeUp 0.8s ease-out both;
+}
+
+.home-title {
+  animation: homeFadeUp 1s ease-out both;
+}
+
+.home-text {
+  animation: homeFadeUp 1.15s ease-out both;
+}
+
+.home-stat-card {
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(12px);
+}
+
+.home-stat-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+}
+
+.home-stat-card-1 {
+  animation: homeFadeUp 1s ease-out both;
+}
+
+.home-stat-card-2 {
+  animation: homeFadeUp 1.15s ease-out both;
+}
+
+.home-stat-card-3 {
+  animation: homeFadeUp 1.3s ease-out both;
+}
+
+.home-photo-card {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-image:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.34)),
+    url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=2000&q=80");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 22px 56px rgba(15, 23, 42, 0.14);
+  animation: homeFadeUp 1.05s ease-out both;
+}
+
+.home-photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 171, 0, 0.16), transparent 42%),
+    radial-gradient(circle at bottom right, rgba(27, 94, 32, 0.28), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(15, 23, 42, 0.08));
+}
+
+.home-photo-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-feature-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  box-shadow:
+    0 22px 56px rgba(15, 23, 42, 0.14),
+    0 10px 24px rgba(255, 171, 0, 0.06);
+  animation: homeFadeUp 1.1s ease-out both;
+  background-size: cover;
+  background-position: center;
+}
+
+.home-feature-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.08), rgba(15, 23, 42, 0.4)),
+    radial-gradient(circle at top right, rgba(255, 171, 0, 0.16), transparent 30%);
+}
+
+.home-feature-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-feature-card-crop {
+  background-image:
+    linear-gradient(135deg, rgba(22, 101, 52, 0.18), rgba(255, 255, 255, 0.02)),
+    url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1800&q=80");
+}
+
+.home-feature-card-company {
+  background-image:
+    linear-gradient(135deg, rgba(120, 53, 15, 0.16), rgba(255, 255, 255, 0.02)),
+    url("https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1800&q=80");
+}
+
+.home-mini-card {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.home-info-tile {
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.5));
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.price-comparison-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background-image:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.34), rgba(27, 94, 32, 0.42)),
+    url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1800&q=80");
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 24px 56px rgba(15, 23, 42, 0.18),
+    0 10px 24px rgba(255, 171, 0, 0.08);
+}
+
+.price-comparison-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 171, 0, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(15, 23, 42, 0.06));
+}
+
+.price-comparison-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.price-comparison-tile {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.price-comparison-tile-highlight {
+  background: linear-gradient(180deg, rgba(27, 94, 32, 0.54), rgba(27, 94, 32, 0.74));
+}
+
+.auth-page-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.auth-page-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 171, 0, 0.16), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(27, 94, 32, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04));
+  pointer-events: none;
+}
+
+.auth-page-shell::after {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border-radius: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 16px 32px rgba(15, 23, 42, 0.08);
+  pointer-events: none;
+}
+
+.auth-page-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-showcase {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.auth-showcase::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.18));
+  pointer-events: none;
+}
+
+.auth-showcase > * {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-showcase-login {
+  background-image:
+    linear-gradient(135deg, rgba(21, 53, 31, 0.34), rgba(255, 171, 0, 0.16)),
+    url("https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1400&q=80");
+}
+
+.auth-showcase-register {
+  background-image:
+    linear-gradient(135deg, rgba(79, 46, 14, 0.28), rgba(27, 94, 32, 0.18)),
+    url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1400&q=80");
+}
+
+.auth-glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 1rem;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.auth-form-card {
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.5));
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(22px);
+}
+
+.auth-form-animate {
+  animation: homeFadeUp 0.9s ease-out both;
+}
+
+.auth-input-wrap {
+  transition: transform 0.22s ease;
+}
+
+.auth-input-wrap:hover {
+  transform: translateY(-2px);
+}
+
+.auth-input-glass {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.52));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 10px 22px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(14px);
+}
+
+.auth-input-glass:focus {
+  border-color: rgba(27, 94, 32, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.glass-surface {
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.58));
+  box-shadow: 0 20px 60px rgba(16, 24, 40, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.home-surface-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-surface-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;
+}
+
+.home-surface-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.68)),
+    radial-gradient(circle at top right, rgba(255, 171, 0, 0.12), transparent 26%);
+}
+
+.home-surface-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-surface-farmer::before {
+  background-image: url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80");
+}
+
+.home-surface-company::before {
+  background-image: url("https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1800&q=80");
+}
+
+.glass-input {
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+}
+
+.auth-fade-in {
+  animation: authFadeIn 0.8s ease-out both;
+}
+
+.auth-float {
+  animation: authFloat 4.5s ease-in-out infinite;
+}
+
+.auth-float-delayed {
+  animation: authFloat 4.5s ease-in-out 0.8s infinite;
+}
+
+@keyframes authFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes homeFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes authFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-shell {
+    background-position: left center;
+  }
+
+  .home-hero {
+    min-height: 520px;
+    background-position: center;
+  }
+
+  .home-title {
+    font-size: 2.75rem;
+    line-height: 1.05;
+  }
+
+  .home-feature-card,
+  .home-photo-card {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 640px) {
+  body::before {
+    opacity: 0.16;
+  }
+
+  .navbar-shell {
+    background-position: 32% center;
+  }
+
+  .navbar-shell .mx-auto {
+    gap: 0.85rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .navbar-mobile-toggle {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .navbar-desktop {
+    display: none;
+  }
+
+  .navbar-mobile-menu {
+    display: none;
+  }
+
+  .navbar-mobile-menu.open {
+    display: block;
+    animation: homeFadeUp 0.28s ease-out both;
+  }
+
+  .navbar-shell a > div:last-child p:first-child {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .navbar-shell a > div:last-child p:last-child {
+    display: none;
+  }
+
+  .navbar-pill {
+    padding: 0.62rem 0.95rem;
+    font-size: 0.8rem;
+  }
+
+  .home-hero {
+    min-height: 460px;
+    padding: 1.25rem;
+  }
+
+  .home-hero-copy {
+    max-width: none;
+    padding: 1.1rem;
+  }
+
+  .home-title {
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  .home-text {
+    font-size: 1rem;
+  }
+
+  .home-feature-card,
+  .home-photo-card {
+    min-height: 280px;
+  }
+
+  .auth-page-shell::after {
+    inset: 12px;
+    border-radius: 28px;
+  }
+
+  .auth-showcase,
+  .auth-form-card {
+    border-radius: 26px;
+  }
+
+  .auth-form-card,
+  .glass-surface,
+  .glass-panel,
+  .price-comparison-card {
+    padding: 1rem;
+  }
+
+  .price-comparison-card h3,
+  .glass-surface h2,
+  .glass-surface h3 {
+    line-height: 1.18;
+  }
+}
